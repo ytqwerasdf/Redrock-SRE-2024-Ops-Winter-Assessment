@@ -50,7 +50,7 @@ void mysh(char *cmd) {
 			char *redir = strstr(cmd, "2>>");
 			*redir = '\0';
 			redir += 3;
-			fd = open(redir, O_WRONLY | O_CREAT , 0644);
+			fd = open(redir, O_WRONLY | O_CREAT | O_APPEND , 0644);
 			if (fd == -1) {
 				perror("open");
 				return;
@@ -61,7 +61,7 @@ void mysh(char *cmd) {
 			char *redir = strstr(cmd, "&>>");
 			*redir = '\0';
 			redir += 3;
-			fd = open(redir, O_WRONLY | O_CREAT , 0644);
+			fd = open(redir, O_WRONLY | O_CREAT | O_APPEND , 0644);
 			if (fd == -1) {
 				perror("open");
 				return;
@@ -94,7 +94,7 @@ void mysh(char *cmd) {
 			char *redir = strstr(cmd, ">>");
 			*redir = '\0';
 			redir += 2;
-			fd = open(redir, O_WRONLY | O_CREAT , 0644);
+			fd = open(redir, O_WRONLY | O_CREAT | O_APPEND , 0644);
 			if (fd == -1) {
 				perror("open");
 				return;
